@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guarding Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="AskavixMain.png" alt="Jedi Security Logo" class="logo-img">
+            Jedi Security Systems
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/statistics.html">Statistics</a></li>
+            <li><a href="/commands.html">Commands</a></li>
+            <li><a href="/guardingleaderboard.html" class="active">Guarding Leaderboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <h1>Guarding Leaderboard</h1>
+
+        <!-- Leaderboard Section -->
+        <div class="leaderboard" id="leaderboard-container">
+            <!-- Leaderboard data will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Powered by Jedi Security Systems</p>
+    </footer>
+
+    <script>
+        // Function to fetch leaderboard data from the API
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch('/api/guardingleaderboard');
+                const data = await response.json();
+
+                if (data.leaderboard && data.leaderboard.length > 0) {
+                    const leaderboardContainer = document.getElementById('leaderboard-container');
+                    leaderboardContainer.innerHTML = ''; // Clear the container before adding new data
+                    
+                    // Loop through the leaderboard data and create cards
+                    data.leaderboard.forEach(card => {
+                        const cardElement = document.createElement('div');
+                        cardElement.classList.add('leaderboard-card');
+
+                        cardElement.innerHTML = `
+                            <div class="leaderboard-card-img">
+                                <!-- Set avatar URL as the source of the image -->
+                                <img src="${card.avatarUrl || 'https://via.placeholder.com/100'}" alt="${card.name}">
+                            </div>
+                            <div class="leaderboard-card-details">
+                                <h3>${card.name}</h3>
+                                <p><strong>Discord ID:</strong> ${card.discordId}</p>
+                                <p><strong>Roblox ID:</strong> ${card.robloxId}</p>
+                                <p><strong>Week Time:</strong> ${card.weekTime}</p>
+                            </div>
+                        `;
+
+                        leaderboardContainer.appendChild(cardElement);
+                    });
+                } else {
+                    document.getElementById('leaderboard-container').innerHTML = '<p>No leaderboard data available.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching leaderboard data:', error);
+                document.getElementById('leaderboard-container').innerHTML = '<p>Error loading leaderboard data.</p>';
+            }
+        }
+
+        // Fetch the leaderboard data when the page loads
+        window.onload = fetchLeaderboard;
+    </script>
+</body>
+</html>

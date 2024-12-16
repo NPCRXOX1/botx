@@ -1,0 +1,787 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    height: 100%;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow-y: auto;   /* Enable vertical scrolling */
+}
+
+/* Static Sci-fi Background with Animation */
+body {
+    background-image: url('scifibg1.png'), linear-gradient(135deg, #1d1d1d, #4a3d2e, #0681c3b3);
+    background-size: cover;
+    background-position: center center; /* Keeps the background centered */
+    background-attachment: fixed;
+    animation: lightShift 10s infinite alternate; /* Add animation */
+    transition: background-position 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Light Shift Animation (subtle movement) */
+@keyframes lightShift {
+    0% {
+        background-position: center center;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px); /* Added blur effect for a sleek sci-fi feel */
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo img {
+    height: 50px;
+    margin-right: 1rem;
+}
+
+nav .logo span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fbfbfbb3; /* Sci-fi inspired color */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li {
+    position: relative;
+    text-transform: uppercase;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #fbfbfbb3; /* Sci-fi inspired hover effect */
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Content Section */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Changed from center to allow scrolling content */
+    padding-top: 80px; /* Add padding to prevent content from being hidden under nav */
+    padding-bottom: 4rem; /* Ensure content at the bottom isn't cut off */
+    text-align: center;
+}
+
+/* Rank Structure Section */
+.rank-section {
+    width: 80%;
+    margin-top: 4rem;
+    text-align: left;
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px); /* Blurry background */
+    border: 1px solid #fbfbfbb3;
+}
+
+/* Rank Items */
+.rank-item {
+    margin-bottom: 1.5rem;
+}
+
+.rank-item h3 {
+    font-size: 2rem;
+    color: #ff6347;
+    position: relative;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.rank-item h3:hover {
+    color: gold;
+}
+
+.rank-item p {
+    font-size: 1.1rem;
+    color: lightgray;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Hover Effect for Rank Items */
+.rank-item:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0px 4px 12px #0681c3b3;
+}
+
+/* Sci-fi Button Styles */
+.content .buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.content .buttons a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    border: 2px solid transparent;
+    padding: 1rem 2rem;
+    position: relative;
+    overflow: hidden; /* Ensure the rectangle stays inside */
+    display: inline-block;
+    transition: all 0.3s ease;
+    background: transparent;
+    border-radius: 10px;
+}
+
+/* Create the rectangle to form on hover */
+.content .buttons a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff6347, #ffa500, #ffff00); /* Sci-fi glowing effect */
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: top 0.4s ease;
+}
+
+/* Hover effect - form rectangle */
+.content .buttons a:hover::before {
+    top: 0; /* Slide the rectangle into view */
+}
+
+.content .buttons a:hover {
+    color: black;
+    border-color: gold;
+    background: #ffa500; /* Sci-fi button background */
+}
+
+/* Leader Section */
+.leader {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.leader img {
+    border-radius: 50%;
+    border: 5px solid gold;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    animation: borderColorChange 2s infinite alternate; /* Color changing border */
+}
+
+@keyframes borderColorChange {
+    0% { border-color: gold; }
+    25% { border-color: #b68e55; }
+    50% { border-color: #4a3d2e; }
+    75% { border-color: #b68e55; }
+    100% { border-color: gold; }
+}
+
+.leader h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Guild Advisor Section */
+.advisor {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.advisor img {
+    border-radius: 50%;
+    border: 5px solid silver;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    position: relative;
+    animation: rain 1s infinite linear;
+}
+
+.advisor h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    color: silver;
+}
+
+/* Rain animation for advisor */
+@keyframes rain {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+/* Guild Council Section */
+.council {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.council-member {
+    text-align: center;
+}
+
+.council-member img {
+    border-radius: 50%;
+    border: 5px solid lightgray;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+.council-member h4 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: lightgray;
+}
+
+/* Shaking effect for council members */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Event Information Styles */
+.content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.event-category {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.event-category h2 {
+    font-size: 2.5rem;
+    color: #0681c3b3; /* Sci-fi inspired color */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+}
+
+.event-list li {
+    font-size: 1.2rem;
+    color: lightgray;
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.event-list li strong {
+    color: #0681c3b3; /* Highlight event names */
+}
+
+.quota {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.quota h2 {
+    font-size: 2.5rem;
+    color: #0681c3b3; /* Sci-fi color */
+    margin-bottom: 1rem;
+}
+
+.quota-item {
+    margin-bottom: 1.5rem;
+}
+
+.quota-item h3 {
+    font-size: 2rem;
+    color: #0681c3b3; /* Highlight rank titles */
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.quota-item p {
+    font-size: 1.2rem;
+    color: lightgray;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .event-category, .quota {
+        padding: 1rem;
+    }
+
+    .quota-item h3 {
+        font-size: 1.8rem;
+    }
+
+    .event-category h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Enhanced Rules List */
+.rules-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.rules-list li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #0681c3b3;
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark background for readability */
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+    position: relative;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Strong Text Styling */
+.rules-list li strong {
+    color: #0681c3b3; /* Sci-fi color */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Hover Effects for List Items */
+.rules-list li:hover {
+    background-color: rgba(255, 99, 71, 0.2); /* Subtle highlight */
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); /* Larger shadow for depth */
+}
+
+/* Section Styling */
+section {
+    margin-top: 3rem;
+    padding: 1rem 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .content h1, .content h2 {
+        font-size: 2rem;
+    }
+
+    .rules-list li {
+        font-size: 1rem;
+        padding: 12px; /* Adjust padding for smaller screens */
+    }
+}
+/* Section Styling for Consequences of Rule Violations */
+section {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Hover Effects for Section */
+section:hover {
+    background: rgba(255, 99, 71, 0.2); /* Slight background change */
+    transform: translateY(-10px); /* Lift the whole section */
+    box-shadow: 0 10px 30px rgba(255, 99, 71, 0.5); /* Larger shadow for depth */
+}
+
+/* Title Styling */
+section h2 {
+    font-size: 2.5rem;
+    color: #0681c3b3; /* Sci-fi accent color */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Title Hover Effect */
+section h2:hover {
+    color: #0681c3b3; /* Change color on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Paragraph Styling */
+section p {
+    font-size: 1.2rem;
+    color: #0681c3b3;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+/* List Item Styling */
+.rules-list li {
+    font-size: 1.2rem;
+    color: #0681c3b3;
+    margin-bottom: 1rem;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* List Item Hover Effect */
+.rules-list li:hover {
+    background-color: rgba(255, 99, 71, 0.2); /* Subtle highlight */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 3px 15px rgba(255, 99, 71, 0.6); /* Glow shadow */
+}
+
+/* Strong Text Inside List Items */
+.rules-list li strong {
+    color: #0681c3b3; /* Sci-fi color */
+    font-weight: bold;
+}
+
+/* Additional Paragraph Hover Effect */
+section p:hover {
+    color: #0681c3b3; /* Highlight paragraph on hover */
+    transform: scale(1.02); /* Slight scale for emphasis */
+}
+
+/* Bot Dashboard Layout */
+.content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+h1 {
+    text-align: center;
+    color: #ff6347;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+p {
+    color: #dcdcdc;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.status-section {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(6, 129, 195, 0.7);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(6, 129, 195, 0.7);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #ff6347;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.info-card p {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+}
+
+/* Bot Commands Section */
+.command-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.command {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(6, 129, 195, 0.7);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.command:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(6, 129, 195, 0.7);
+}
+
+.command h3 {
+    font-size: 1.5rem;
+    color: #ff6347;
+    margin-bottom: 1rem;
+}
+
+.command p {
+    font-size: 1rem;
+    color: #dcdcdc;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons - Enable and Disable */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #ff6347;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Enable Button Styles */
+button.enable {
+    background-color: #28a745; /* Green for enabled */
+}
+
+button.enable:hover {
+    background-color: #218838; /* Dark green on hover */
+}
+
+/* Disable Button Styles */
+button.disable {
+    background-color: #dc3545; /* Red for disabled */
+}
+
+button.disable:hover {
+    background-color: #c82333; /* Dark red on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .command-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .status-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* General Styles for Leaderboard */
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1.5rem; /* Reduced gap between cards */
+}
+
+.leaderboard-card {
+    display: flex;
+    align-items: center; /* Aligns content in a row */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 15px;
+    width: 750px; /* Width of the card */
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(6, 129, 195, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 1rem; /* Gap between image and text */
+}
+
+.leaderboard-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(6, 129, 195, 0.7);
+}
+
+.leaderboard-card-img img {
+    border-radius: 50%;
+    width: 80px; /* Profile picture size */
+    height: 80px;
+    object-fit: cover;
+}
+
+/* Text and ID section */
+.leaderboard-card-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text horizontally */
+    justify-content: center;
+    width: 100%;
+}
+
+.leaderboard-card-details h3 {
+    color: #ff6347;
+    font-size: 1.2rem; /* Username font size */
+    margin: 0 0 0.5rem;
+}
+
+.leaderboard-card-ids {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.leaderboard-card-details p {
+    color: lightgray;
+    font-size: 0.9rem; /* Font size for the IDs */
+    margin: 0.3rem 0;
+}
+
+.leaderboard-card-details strong {
+    color: #ffa500;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .leaderboard-card {
+        width: 90%; /* Cards take up more space on smaller screens */
+    }
+}
+/* Animation for Guarding Leaderboard Text */
+@keyframes colorChange {
+    0% {
+        color: gold;
+    }
+    50% {
+        color: blue;
+    }
+    100% {
+        color: rgb(251, 0, 255);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    animation: colorChange 3s ease-in-out infinite; /* Adjust timing as needed */
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Style for the logo */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;  /* Adjust the font size */
+}
+
+.navbar .logo .logo-img {
+    width: 40px;  /* Size of the logo */
+    height: 40px;  /* Size of the logo */
+    border-radius: 50%;  /* Make the logo circular */
+    margin-right: 10px;  /* Space between the logo and the text */
+}
+
+/* Style for the navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #000;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-links .active {
+    font-weight: bold;
+    color: #ff6347;  /* Active link color */
+}
+
